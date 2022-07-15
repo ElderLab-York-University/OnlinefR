@@ -1,0 +1,62 @@
+[
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  returnLines_data.c -o build/maci64/returnLines_data.o",
+    "file": "returnLines_data.c",
+    "output": "build/maci64/returnLines_data.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  rt_nonfinite.c -o build/maci64/rt_nonfinite.o",
+    "file": "rt_nonfinite.c",
+    "output": "build/maci64/rt_nonfinite.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  returnLines_initialize.c -o build/maci64/returnLines_initialize.o",
+    "file": "returnLines_initialize.c",
+    "output": "build/maci64/returnLines_initialize.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  returnLines_terminate.c -o build/maci64/returnLines_terminate.o",
+    "file": "returnLines_terminate.c",
+    "output": "build/maci64/returnLines_terminate.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  returnLines.c -o build/maci64/returnLines.o",
+    "file": "returnLines.c",
+    "output": "build/maci64/returnLines.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  interface/_coder_returnLines_api.c -o build/maci64/_coder_returnLines_api.o",
+    "file": "interface/_coder_returnLines_api.c",
+    "output": "build/maci64/_coder_returnLines_api.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  interface/_coder_returnLines_mex.c -o build/maci64/_coder_returnLines_mex.o",
+    "file": "interface/_coder_returnLines_mex.c",
+    "output": "build/maci64/_coder_returnLines_mex.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  returnLines_emxutil.c -o build/maci64/returnLines_emxutil.o",
+    "file": "returnLines_emxutil.c",
+    "output": "build/maci64/returnLines_emxutil.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  interface/_coder_returnLines_info.c -o build/maci64/_coder_returnLines_info.o",
+    "file": "interface/_coder_returnLines_info.c",
+    "output": "build/maci64/_coder_returnLines_info.o"
+  },
+  {
+    "directory": "/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles/codegen/mex/returnLines",
+    "command": "/usr/bin/xcrun -sdk macosx11.0 clang -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I \".\" -I \"/Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles\" -I \"./interface\" -I \"/Applications/MATLAB_R2021a.app/extern/include\" -I \".\" -DMODEL=returnLines -c  /Applications/MATLAB_R2021a.app/extern/version/c_mexapi_version.c -o build/maci64/c_mexapi_version.o",
+    "file": "/Applications/MATLAB_R2021a.app/extern/version/c_mexapi_version.c",
+    "output": "build/maci64/c_mexapi_version.o"
+  }
+]

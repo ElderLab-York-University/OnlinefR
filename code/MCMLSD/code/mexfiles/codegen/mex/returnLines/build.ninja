@@ -1,0 +1,49 @@
+# CompilerName=clang
+# Mode=optim
+ninja_required_version = 1.3
+
+# Basic folders
+root = .
+builddir = $root/build/maci64
+matlabdir = /Applications/MATLAB_R2021a.app
+startdir = /Users/yimingqian/Dropbox/PhD/camera calibration project/lineSegManhattanEstimation/MCMLSD/code/mexfiles
+
+# Toolchain information
+cc = /usr/bin/xcrun -sdk macosx11.0 clang
+cxx = /usr/bin/xcrun -sdk macosx11.0 clang++
+linker = /usr/bin/xcrun -sdk macosx11.0 clang
+linkerxx = /usr/bin/xcrun -sdk macosx11.0 clang++
+
+cflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c99 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=returnLines -c 
+
+cxxflags =  -fno-common -arch x86_64 -mmacosx-version-min=10.14 -fexceptions -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -fobjc-arc -std=c++11 -stdlib=libc++ -DMATLAB_MEX_FILE -O2 -fwrapv -DNDEBUG -std=c++11 -I "$root" -I "$startdir" -I "$root/interface" -I "$matlabdir/extern/include" -I "." -DMODEL=returnLines -c 
+
+ldflags =  -Wl,-twolevel_namespace -undefined error -arch x86_64 -mmacosx-version-min=10.14 -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -bundle   -L"$matlabdir/bin/maci64" -lmx -lmex -lmat -lc++  -Wl,-rpath,@loader_path -o returnLines.mexmaci64 -lemlrt -lcovrt -lut -lmwmathutil  -Wl,-exported_symbols_list,returnLines.map
+
+# Build Rules
+rule cc
+    command = $cc $cflags $in -o $out
+
+rule cxx
+    command = $cxx $cxxflags $in -o $out
+
+rule link
+    command = $linker $in $ldflags
+
+rule linkxx
+    command = $linkerxx $in $ldflags
+
+# Build
+build $builddir/returnLines_data.o : cc $root/returnLines_data.c
+build $builddir/rt_nonfinite.o : cc $root/rt_nonfinite.c
+build $builddir/returnLines_initialize.o : cc $root/returnLines_initialize.c
+build $builddir/returnLines_terminate.o : cc $root/returnLines_terminate.c
+build $builddir/returnLines.o : cc $root/returnLines.c
+build $builddir/_coder_returnLines_api.o : cc $root/interface/_coder_returnLines_api.c
+build $builddir/_coder_returnLines_mex.o : cc $root/interface/_coder_returnLines_mex.c
+build $builddir/returnLines_emxutil.o : cc $root/returnLines_emxutil.c
+build $builddir/_coder_returnLines_info.o : cc $root/interface/_coder_returnLines_info.c
+build $builddir/c_mexapi_version.o : cc $matlabdir/extern/version/c_mexapi_version.c
+
+# Link
+build $root/returnLines.mexmaci64 : link $builddir/returnLines_data.o $builddir/rt_nonfinite.o $builddir/returnLines_initialize.o $builddir/returnLines_terminate.o $builddir/returnLines.o $builddir/_coder_returnLines_api.o $builddir/_coder_returnLines_mex.o $builddir/returnLines_emxutil.o $builddir/_coder_returnLines_info.o $builddir/c_mexapi_version.o 
