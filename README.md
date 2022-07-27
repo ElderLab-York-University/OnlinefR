@@ -4,6 +4,8 @@ Linear perspective cues deriving from regularities of the built environment can 
 
 <img width="1069" alt="Screen Shot 2022-07-19 at 14 04 07" src="https://user-images.githubusercontent.com/21068712/179676987-f041d34d-37b5-427d-835d-e01f9c66d1ba.png">
 
+Our paper was accepted in ECCV 2022. The paper can be found here http://arxiv.org/abs/2207.12934
+
 The PanoContext-fR dataset can be downloaded from here.
 https://yuoffice.sharepoint.com/:u:/r/sites/TheLab/Shared%20Documents/General/panoramic.zip?csf=1&web=1&e=BvkEnS
 
