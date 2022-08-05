@@ -1,10 +1,6 @@
-function [associationSeg,vp_info,euler_angles,runTime]=onlinefR(linesSegments,parameters)
+function [associationSeg,vp_info,rotation,runTime]=onlinefR(linesSegments,parameters)
 
-linesRecoveredP=linesSegments.linesSeg;
-%remove the line segments shorter than 1 pixel
-lineLength=sqrt(sum((linesRecoveredP(:,1:2)-linesRecoveredP(:,3:4)).^2,2));
-threshold=1;
-line_sub=linesRecoveredP(lineLength>threshold,:);
+line_sub=linesSegments.linesSeg;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 pp=parameters.pp;
 test_inits=parameters.test_inits;
@@ -23,9 +19,7 @@ end
 
 vp_f = vp_temp(end-2:end,:);
 maxlikelihood=final_likelihoods;
-euler_angles=[];
-
-[associationSeg] = evaluate_line_associations2(linesRecoveredP, vp_f, pp, focal,paramS,pdfdhtable,pdfdvtable);
+[associationSeg] = evaluate_line_associations2(line_sub, vp_f, pp, focal,paramS,pdfdhtable,pdfdvtable);
 
 vp_info=struct();
 vp_info.vp=vp_f;
@@ -33,5 +27,31 @@ vp_info.vp=vp_f;
 vp_info.pp=pp;
 vp_info.focal=focal;
 vp_info.maxlikelihood=maxlikelihood;
+
+points2D=projectworld2Image(vp_f',focal,pp)-pp;
+angles=atand(abs(points2D(:,2)./points2D(:,1)));
+ind=find(angles>60);
+[~,hInd]=max(abs(points2D(ind,2)));
+if ind(hInd)~=2
+    temp=vp_f;
+    vp_f(:,2)=temp(:,ind(hInd));
+    vp_f(:,ind(hInd))=temp(:,2);
+end
+points2D=projectworld2Image(vp_f',focal,pp)';
+points3D=[points2D;ones(1,3)*focal];
+points3D(1,:)=points3D(1,:)-pp(1);
+points3D(2,:)=points3D(2,:)-pp(2);
+points3D(:,1)=points3D(:,1)/norm(points3D(:,1));
+points3D(:,2)=points3D(:,2)/norm(points3D(:,2));
+points3D(:,3)=points3D(:,3)/norm(points3D(:,3));
+rotM=points3D;
+rotM(:,1)=-points3D(:,1);
+rotM(:,2)=-points3D(:,3);
+rotM(:,3)=-points3D(:,2);
+
+rollest=atand(rotM(1,3)/rotM(2,3));
+tiltest=atand(-rotM(3,3)/rotM(2,3));
+rotation.roll=rollest;
+rotation.tilt=tiltest;
 
 end

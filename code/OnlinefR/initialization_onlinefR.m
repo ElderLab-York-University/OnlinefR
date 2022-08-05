@@ -31,10 +31,10 @@ hor_range=hor_range(2:end-1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load('pdfData.mat');
 mixParams=[0.445175656615196,0.262438160101957,0.00980884476515174,0.0137715966528598,0.0299480231808897];
-ytabv = icdf(pdfdv,1-eps)*[0:0.001:pi/2]; %sample angle
+ytabv = icdf(pdfdv,1-eps)*[0:0.001:1]; %sample angle
 prob_v = mixParams(1)*pdf(pdfdv,ytabv);
 pdfdvtable=[ytabv',prob_v'];
-ytabh = icdf(pdfdh,1-eps)*[0:0.001:pi/2]; %sample angle
+ytabh = icdf(pdfdh,1-eps)*[0:0.001:1]; %sample angle
 prob_h1 = mixParams(2)*pdf(pdfdh,ytabh);
 pdfdhtable=[ytabh',prob_h1'];
 test_inits = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver4(eye(3), hor_range, ver_range,roll_range);
@@ -49,6 +49,7 @@ parameters.ublb=ublb;
 parameters.focal_range=focal_range;
 parameters.focal=0;
 parameters.mode=mode;
+parameters.threshold=1;
 setGlobalx(1000);
 if strcmp(mode,'fast')
    setGlobalx(10); 

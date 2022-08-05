@@ -9,12 +9,14 @@ img = imread('samples.jpg');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialize the parameter for a fixed image size, you on
-mode='fast'; %mode can be 'regular' or 'fast'
+mode='regular'; %mode can be 'regular' or 'fast'
 parameters = initialization_onlinefR(img,mode);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%line segment detection for image
 linesSegments=lineSegmentDet(img,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-[segmentAssociation,vp_info,euler_angles,runTime]=onlinefR(linesSegments,parameters);
+%use detected line segment to estimate focal length and vanishing points
+[segmentAssociation,vp_info,rotation,runTime]=onlinefR(linesSegments,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fig = figure;
 imshow(img);
@@ -37,5 +39,7 @@ for i = 1:length(linesSegments.linesSeg)
 end
 hold off;
 
+disp(['roll angle is ' num2str(rotation.roll) ' degree']);
+disp(['tilt angle is ' num2str(rotation.tilt) ' degree']);
 
 
