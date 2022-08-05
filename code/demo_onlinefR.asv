@@ -1,0 +1,42 @@
+clear
+clc
+close all
+
+addpath(genpath('MCMLSD/'));
+addpath(genpath('OnlinefR/'));
+addpath(genpath('lsd-1.5/'));
+img = imread('samples.jpg');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%initialize the parameter for a fixed image size, you on
+mode='regular'; %mode can be 'regular' or 'fast'
+parameters = initialization_onlinefR(img,mode);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+linesSegments=lineSegmentDet(img,parameters);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+[segmentAssociation,vp_info,euler_angles,runTime]=onlinefR(linesSegments,parameters);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+linesRecovered=[linesSegments.linesSeg,segmentAssociation];
+fig = figure;
+imshow(img);
+hold on;
+for i = 1:length(linesRecovered)
+    p1 = linesRecovered(i,1:2);
+    p2 = linesRecovered(i,3:4);
+    if segmentAssociation==1
+        plot([p1(1), p2(1)], [p1(2) p2(2)], 'r','LineWidth',3); %Z
+    end
+    if linesRecovered(i,6)==2
+        plot([p1(1), p2(1)], [p1(2) p2(2)], 'g','LineWidth',3); %X
+    end
+    if linesRecovered(i,6)==3
+        plot([p1(1), p2(1)], [p1(2) p2(2)], 'b','LineWidth',3); %Y
+    end
+    if linesRecovered(i,7)==4
+        plot([p1(1), p2(1)], [p1(2) p2(2)], 'y','LineWidth',3); %Y
+    end
+end
+hold off;
+
+
+
