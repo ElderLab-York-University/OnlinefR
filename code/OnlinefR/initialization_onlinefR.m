@@ -50,9 +50,9 @@ parameters.focal_range=focal_range;
 parameters.focal=0;
 parameters.mode=mode;
 parameters.threshold=1;
-setGlobalx(1000);
+parameters.maxIter=1000;
 if strcmp(mode,'fast')
-   setGlobalx(10); 
+   parameters.maxIter=10;
    parameters.kernels=[];
    parameters.kernels_flip=[];
    parameters.kernel_params=[];

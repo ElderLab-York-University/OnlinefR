@@ -1,4 +1,4 @@
-function [final_vp,final_likelihoods,focal,result,data,final_all_samples,runTime] = VP_estimation_Method6(test_inits,ublb, lineData, mixParams, sampleFocal, pp,gd,pdfdhtable,pdfdvtable)
+function [final_vp,final_likelihoods,focal,result,data,final_all_samples,runTime] = VP_estimation_Method(test_inits,ublb, lineData, mixParams, sampleFocal, pp,gd,pdfdhtable,pdfdvtable,maxIter)
 runTime=zeros(5,1);
 tic;
 [M,N,P,~,~] = size(test_inits);
@@ -23,6 +23,8 @@ end
 
 runTime(1)=toc;
 
+options = optimoptions(@fmincon,'Display','off','Algorithm','interior-point','MaxIter',maxIter);
+
 tic;
 numgd=gd;
 
@@ -41,7 +43,7 @@ for i=1:numgd
     ind=indk(i);
     [r,c,h,w]=ind2sub(size(maxPosition),ind);
     euler_angles=rotm2eul(squeeze(test_inits(c,h,w,:,:)),'XYZ');
-    [final_vp, final_likelihoods, ~,focal] = Quasi_Newton_fminunc_EulerAngles_Method4v2(euler_angles,mixParams, lineDataAll, sampleFocal(r), pp,ublb,pdfdhtable,pdfdvtable);
+    [final_vp, final_likelihoods, ~,focal] = Quasi_Newton_fminunc_EulerAngles_Method4v2(euler_angles,mixParams, lineDataAll, sampleFocal(r), pp,ublb,pdfdhtable,pdfdvtable,options);
     
     if final_likelihoods>max_finalLikelihood
         max_finalLikelihood=final_likelihoods;

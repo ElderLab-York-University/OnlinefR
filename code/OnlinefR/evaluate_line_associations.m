@@ -1,4 +1,4 @@
-function [associations] = evaluate_line_associations2(lineData, vp, pp, focal,mixParams,pdfdhtable,pdfdvtable)
+function [associations] = evaluate_line_associations(lineData, vp, pp, focal,mixParams,pdfdhtable,pdfdvtable)
 
 lineDataAll=struct();
 lineDataAll.middle=(lineData(:,1:2)+lineData(:,3:4))/2;

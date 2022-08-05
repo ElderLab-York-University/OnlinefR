@@ -1,14 +1,4 @@
-function [final_vp, final_likelihoods, final_euler_angles,focal] = Quasi_Newton_fminunc_EulerAngles_Method4v2(ini_Euler,mixParams,lineData, focal, pp,ublb,pdfdhtable,pdfdvtable)
-
-% if nargin < 7
-%     fprintf('Adjusting options parameter to defaults in fminunc_EulerAngles()\n');
-%     options = optimset('fminunc'); 
-%     options.LargeScale = 'off';
-% else
-    r = getGlobalx;
-    options = optimoptions(@fmincon,'Display','off','Algorithm','interior-point','MaxIter',r);
-% end
-
+function [final_vp, final_likelihoods, final_euler_angles,focal] = Quasi_Newton_fminunc_EulerAngles_Method4v2(ini_Euler,mixParams,lineData, focal, pp,ublb,pdfdhtable,pdfdvtable,options)
 multiplier=ublb(2,4);
 ini_Euler=[ini_Euler,focal/multiplier];
 lb=ublb(1,:);
