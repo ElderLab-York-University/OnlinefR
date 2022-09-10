@@ -8,9 +8,9 @@ v2=v2./sqrt(sum(v2.^2,2));
 lineDataAll.v2=v2;
 
 
-prob_vpx = computeMeanErrorLineVPv2(vp(:,1),lineDataAll,focal,pp,pdfdvtable);
-prob_vpy = computeMeanErrorLineVPv2(vp(:,2),lineDataAll,focal,pp,pdfdhtable);
-prob_vpz = computeMeanErrorLineVPv2(vp(:,3),lineDataAll,focal,pp,pdfdhtable);
+prob_vpx = computeMeanErrorLineVP(vp(:,1),lineDataAll,focal,pp,pdfdvtable);
+prob_vpy = computeMeanErrorLineVP(vp(:,2),lineDataAll,focal,pp,pdfdhtable);
+prob_vpz = computeMeanErrorLineVP(vp(:,3),lineDataAll,focal,pp,pdfdhtable);
 
 
 alpha_b = 1 - (mixParams(1) + 2*mixParams(2));

@@ -16,7 +16,7 @@
 % solutions required.
 %
 %#####################################################
-function coordFrames = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver4(vp, hor_range, ver_range,roll_range)
+function coordFrames = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver(vp, hor_range, ver_range,roll_range)
 
 
 ver_length = length(ver_range);

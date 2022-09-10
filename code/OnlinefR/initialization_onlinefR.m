@@ -37,7 +37,7 @@ pdfdvtable=[ytabv',prob_v'];
 ytabh = icdf(pdfdh,1-eps)*[0:0.001:1]; %sample angle
 prob_h1 = mixParams(2)*pdf(pdfdh,ytabh);
 pdfdhtable=[ytabh',prob_h1'];
-test_inits = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver4(eye(3), hor_range, ver_range,roll_range);
+test_inits = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver(eye(3), hor_range, ver_range,roll_range);
 
 parameters.pp=pp;
 

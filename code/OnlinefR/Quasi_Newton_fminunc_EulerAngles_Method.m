@@ -1,4 +1,4 @@
-function [final_vp, final_likelihoods, final_euler_angles,focal] = Quasi_Newton_fminunc_EulerAngles_Method4v2(ini_Euler,mixParams,lineData, focal, pp,ublb,pdfdhtable,pdfdvtable,options)
+function [final_vp, final_likelihoods, final_euler_angles,focal] = Quasi_Newton_fminunc_EulerAngles_Method(ini_Euler,mixParams,lineData, focal, pp,ublb,pdfdhtable,pdfdvtable,options)
 multiplier=ublb(2,4);
 ini_Euler=[ini_Euler,focal/multiplier];
 lb=ublb(1,:);
@@ -8,7 +8,7 @@ lb(1,4)=focal/multiplier;
 ub(1,4)=focal/multiplier;
 
 
-fun = @(x)eval_Quasi_Newton_fminunc_Euler_Method4v2(x, mixParams, multiplier, lineData, pp,pdfdhtable,pdfdvtable); 
+fun = @(x)eval_Quasi_Newton_fminunc_Euler_Method(x, mixParams, multiplier, lineData, pp,pdfdhtable,pdfdvtable); 
 
 %maximize likelihood of model
 [final_euler_anglesOpt, final_likelihoods] = fmincon(fun, ini_Euler,[],[],[],[],lb,ub,[],options); 

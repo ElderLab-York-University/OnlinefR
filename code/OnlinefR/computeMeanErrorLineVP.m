@@ -1,5 +1,5 @@
 
-function theta=computeMeanErrorLineVPv2(vp,linesP,focal,pp,pdftable)
+function theta=computeMeanErrorLineVP(vp,linesP,focal,pp,pdftable)
 
 ytab=pdftable(:,1);
 pytab=pdftable(:,2);
