@@ -11,6 +11,8 @@ img = imread('sample.jpg');
 %initialize the parameter for a fixed image size, you on
 mode='fast'; %mode can be 'regular' or 'fast'
 parameters = initialization_onlinefR(img,mode);
+parameters.pp=[320,240];
+parameters.focal=600;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %line segment detection for image
 linesSegments=lineSegmentDet(img,parameters);

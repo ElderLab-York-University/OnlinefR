@@ -7,7 +7,6 @@ addpath(genpath('OnlinefR/'));
 addpath(genpath('lsd-1.5/'));
 img = imread('sample.jpg');
 
-focal=600;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialize the parameter for a fixed image size, you on
 mode='fast'; %mode can be 'regular' or 'fast'
@@ -18,7 +17,7 @@ parameters.pp=[320,240];
 linesSegments=lineSegmentDet(img,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %use detected line segment to estimate focal length and vanishing points
-[segmentAssociation,vp_info,rotation,runTime]=onlinefR_focal(linesSegments,parameters,focal);
+[segmentAssociation,vp_info,rotation,runTime]=onlinefR(linesSegments,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 fig = figure;
 imshow(img);

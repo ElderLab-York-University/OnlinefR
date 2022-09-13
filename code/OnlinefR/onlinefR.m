@@ -15,6 +15,8 @@ paramS=[0.445175656615196,0.262438160101957,0.00980884476515174,0.01377159665285
 %Estimate manhatton frame association
 if focal==0
     [vp_temp,final_likelihoods,focal,~,~,~,runTime] = VP_estimation_Method(test_inits, ublb, line_sub, paramS, sampleFocal, pp,gd,pdfdhtable,pdfdvtable,maxIter);
+else
+    [vp_temp,final_likelihoods,focal,~,~,~,runTime] = VP_estimation_Method_focal(test_inits, ublb, line_sub, paramS, focal, pp,gd,pdfdhtable,pdfdvtable,maxIter);
 end
 
 vp_f = vp_temp(end-2:end,:);
