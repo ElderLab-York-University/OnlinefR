@@ -9,10 +9,10 @@ img = imread('sample.jpg');
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialize the parameter for a fixed image size, you on
-mode='fast'; %mode can be 'regular' or 'fast'
+mode='regular'; %mode can be 'regular' or 'fast'
 parameters = initialization_onlinefR(img,mode);
-parameters.pp=[320,240];
-parameters.focal=600;
+%parameters.pp=[320,240]; %if you have principle length you can input here
+%parameters.focal=600; %if you have focal lenth, you can input here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %line segment detection for image
 linesSegments=lineSegmentDet(img,parameters);
