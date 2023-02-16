@@ -13,7 +13,7 @@ gd=4;
 max_ver=30;
 max_roll=15;
 max_hor=45;
-angle_min_max=[40,80];
+angle_min_max=[60,120];
 
 focal_min_max=(pp(1)./tand(angle_min_max/2));
 ublb=[deg2rad(-max_ver)*0.99,deg2rad(-max_hor)*0.99,deg2rad(-max_roll)*0.99,focal_min_max(2)*0.99;
