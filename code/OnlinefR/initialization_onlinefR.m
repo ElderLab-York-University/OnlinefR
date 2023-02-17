@@ -8,12 +8,12 @@ pp=[n/2,m/2]; %principle point assumed to be center
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialization
-sp=8;
-gd=4;
-max_ver=30;
+sp=8; %number of grid samples
+gd=4; %number of gradient decent
+max_ver=35;
 max_roll=15;
 max_hor=45;
-angle_min_max=[60,120];
+angle_min_max=[50,130];
 
 focal_min_max=(pp(1)./tand(angle_min_max/2));
 ublb=[deg2rad(-max_ver)*0.99,deg2rad(-max_hor)*0.99,deg2rad(-max_roll)*0.99,focal_min_max(2)*0.99;
@@ -49,17 +49,5 @@ parameters.ublb=ublb;
 parameters.focal_range=focal_range;
 parameters.focal=0;
 parameters.mode=mode;
-parameters.threshold=1;
 parameters.maxIter=1000;
-if strcmp(mode,'fast')
-   parameters.maxIter=10;
-   parameters.kernels=[];
-   parameters.kernels_flip=[];
-   parameters.kernel_params=[];
-else
-    [kernels, kernels_flip, kernel_params] =kernelInitialization(img);
-    parameters.kernels=kernels;
-    parameters.kernels_flip=kernels_flip;
-    parameters.kernel_params=kernel_params;
-end
 end

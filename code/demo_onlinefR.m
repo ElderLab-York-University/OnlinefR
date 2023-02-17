@@ -5,18 +5,20 @@ close all
 addpath(genpath('MCMLSD/'));
 addpath(genpath('OnlinefR/'));
 addpath(genpath('lsd-1.5/'));
-img = imread('tovari10001.png');
+img = imread('sample.jpg');
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialize the parameter for a fixed image size, you on
 mode='regular'; %mode can be 'regular' or 'fast'
-parameters = initialization_onlinefR(img,mode);
-%parameters.pp=[320,240]; %if you have principle length you can input here
-%parameters.focal=600; %if you have focal lenth, you can input here
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %line segment detection for image
-linesSegments=lineSegmentDet(img,parameters);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+parametersMCMLSD = initialization_MCMLSD(img,mode);
+linesSegments=lineSegmentDet(img,parametersMCMLSD);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+parameters = initialization_onlinefR(img,mode);
+%parameters.pp=[320,240]; %if you have principle length you can input here
+% parameters.focal=633.6; %if you have focal lenth, you can input here
 %use detected line segment to estimate focal length and vanishing points
 [segmentAssociation,vp_info,rotation,runTime]=onlinefR(linesSegments,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

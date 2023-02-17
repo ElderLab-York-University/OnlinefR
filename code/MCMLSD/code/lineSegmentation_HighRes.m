@@ -10,18 +10,18 @@ function [lines, fullLines] =lineSegmentation_HighRes(img,parameters)
 kernels=parameters.kernels;
 kernels_flip=parameters.kernels_flip;
 kernel_params=parameters.kernel_params;
-pp=parameters.pp;
+% pp=parameters.pp;
 
 sig_bound = 3; %threshold for the line detection
 r_res = 0.2; %the theshold for the rho
 th_res = 0.002; %the threshold for theta
 [m,n,~]=size(img);
 scale_factor = sqrt(m^2+n^2)/800; %800 is the diagnal length of 640x480 image
-
+cImg=[n/2,m/2];
 
 %the kernel of the algorithm is calibrated on 640x480 image
-%rescale the principle point
-pp(1)=pp(1)*n/640;
-pp(2)=pp(2)*m/480;
-[lines, fullLines] = run_lineSegmentAlgorithm(kernels, kernels_flip, kernel_params, sig_bound, r_res, th_res, img, scale_factor,pp);
+%rescale the centre of image
+cImg(1)=cImg(1)*n/640;
+cImg(2)=cImg(2)*m/480;
+[lines, fullLines] = run_lineSegmentAlgorithm(kernels, kernels_flip, kernel_params, sig_bound, r_res, th_res, img, scale_factor,cImg);
 end

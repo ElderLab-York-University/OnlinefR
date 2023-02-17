@@ -40,7 +40,7 @@ for i=1:numgd
     ind=indk(i);
     [r,c,h,w]=ind2sub(size(maxPosition),ind);
     euler_angles=rotm2eul(squeeze(test_inits(c,h,w,:,:)),'XYZ');
-    [final_vp, final_likelihoods, ~,focal] = Quasi_Newton_fminunc_EulerAngles_Method(euler_angles,mixParams, lineDataAll, focal, pp,ublb,pdfdhtable,pdfdvtable,options);
+    [final_vp, final_likelihoods, ~,focal] = Quasi_Newton_fminunc_EulerAngles_Method_focal(euler_angles,mixParams, lineDataAll, focal, pp,ublb,pdfdhtable,pdfdvtable,options);
     
     if final_likelihoods>max_finalLikelihood
         max_finalLikelihood=final_likelihoods;
