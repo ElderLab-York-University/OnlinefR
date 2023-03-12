@@ -5,7 +5,7 @@ close all
 addpath(genpath('MCMLSD/'));
 addpath(genpath('OnlinefR/'));
 addpath(genpath('lsd-1.5/'));
-img = imread('sample.jpg');
+img = imread('football1.png');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
