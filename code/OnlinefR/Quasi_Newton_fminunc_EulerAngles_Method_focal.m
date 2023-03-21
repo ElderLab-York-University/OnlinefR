@@ -1,7 +1,7 @@
 function [final_vp, final_likelihoods, final_euler_angles,focal] = Quasi_Newton_fminunc_EulerAngles_Method_focal(ini_Euler,mixParams,lineData, focal, pp,ublb,pdfdhtable,pdfdvtable,options)
 
-lb=ublb(1,:);
-ub=ublb(2,:);
+lb=ublb(1,1:3);
+ub=ublb(2,1:3);
 
 
 
