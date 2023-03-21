@@ -21,7 +21,7 @@ cImg=[n/2,m/2];
 
 %the kernel of the algorithm is calibrated on 640x480 image
 %rescale the centre of image
-cImg(1)=cImg(1)*n/640;
-cImg(2)=cImg(2)*m/480;
+% cImg(1)=cImg(1)*n/640;
+% cImg(2)=cImg(2)*m/480;
 [lines, fullLines] = run_lineSegmentAlgorithm(kernels, kernels_flip, kernel_params, sig_bound, r_res, th_res, img, scale_factor,cImg);
 end

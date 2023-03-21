@@ -5,7 +5,7 @@ close all
 addpath(genpath('MCMLSD/'));
 addpath(genpath('OnlinefR/'));
 addpath(genpath('lsd-1.5/'));
-img = imread('football1.png');
+img = imread('lobby0001.png');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,7 +18,9 @@ linesSegments=lineSegmentDet(img,parametersMCMLSD);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 parameters = initialization_onlinefR(img,mode);
 %parameters.pp=[320,240]; %if you have principle length you can input here
-% parameters.focal=633.6; %if you have focal lenth, you can input here
+
+parameters.pp=[632.2864,  372.7488];
+parameters.focal=636.7740; %if you have focal lenth, you can input here
 %use detected line segment to estimate focal length and vanishing points
 [segmentAssociation,vp_info,rotation,runTime]=onlinefR(linesSegments,parameters);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
