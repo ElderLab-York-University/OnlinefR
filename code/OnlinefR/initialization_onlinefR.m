@@ -50,4 +50,13 @@ parameters.focal_range=focal_range;
 parameters.focal=0;
 parameters.mode=mode;
 parameters.maxIter=1000;
+
+load('ManhattanQuality.mat');
+parameters.QC=1;
+parameters.N=N;
+parameters.y=c;
+parameters.x=errorTrain;
+parameters.meanx=meanx;
+parameters.F=F;
+parameters.v=v;
 end
