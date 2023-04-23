@@ -13,7 +13,7 @@ gd=4; %number of gradient decent
 max_ver=35;
 max_roll=15;
 max_hor=45;
-angle_min_max=[60,120];
+angle_min_max=[40,80];
 
 focal_min_max=(pp(1)./tand(angle_min_max/2));
 ublb=[deg2rad(-max_ver)*0.99,deg2rad(-max_hor)*0.99,deg2rad(-max_roll)*0.99,focal_min_max(2)*0.99;
@@ -31,12 +31,23 @@ hor_range=hor_range(2:end-1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load('pdfData.mat');
 mixParams=[0.445175656615196,0.262438160101957,0.00980884476515174,0.0137715966528598,0.0299480231808897];
-ytabv = icdf(pdfdv,1-eps)*[0:0.001:1]; %sample angle
+ytabv = icdf(pdfdv,1-eps)*[0:0.0001:1]; %sample angle
 prob_v = mixParams(1)*pdf(pdfdv,ytabv);
 pdfdvtable=[ytabv',prob_v'];
-ytabh = icdf(pdfdh,1-eps)*[0:0.001:1]; %sample angle
+
+% y = linspace(0,ytabv(end),1000);
+% theta = interp1(ytabv,prob_v,y,'linear','extrap');
+% pdfdvtable=[y',theta'];
+
+
+ytabh = icdf(pdfdh,1-eps)*[0:0.0001:1]; %sample angle
 prob_h1 = mixParams(2)*pdf(pdfdh,ytabh);
 pdfdhtable=[ytabh',prob_h1'];
+% y = linspace(0,ytabh(end),1000);
+% theta = interp1(ytabh,prob_h1,y,'linear','extrap');
+% pdfdhtable=[y',theta'];
+
+
 test_inits = compute_Equal_Spaced_CoordFrames_init_hor_roll_and_ver(eye(3), hor_range, ver_range,roll_range);
 
 parameters.pp=pp;

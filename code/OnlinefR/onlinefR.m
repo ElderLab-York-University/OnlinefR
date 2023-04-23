@@ -81,6 +81,6 @@ if parameters.QC
     likelihoodA=likelihooddir/length(linelengthdir);
     constrain=[minNum,entropyLikelihood,likelihoodA];
     score_whitening=(constrain-parameters.meanx)*(parameters.F*parameters.v);
-    vp_info.QC=smoothKNNK(score_whitening,parameters.N,parameters.y,parameters.x);
+    vp_info.QC=smoothKNNK(score_whitening,parameters.N,parameters.y,parameters.x,parameters.focal);
 end
 end

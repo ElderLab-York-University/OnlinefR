@@ -5,12 +5,12 @@ close all
 addpath(genpath('MCMLSD/'));
 addpath(genpath('OnlinefR/'));
 addpath(genpath('lsd-1.5/'));
-img = imread('groundfloor0001.png');
+img = imread('P1040823.jpg');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %initialize the parameter for a fixed image size, you on
-mode='regular'; %mode can be 'regular' or 'fast'
+mode='fast'; %mode can be 'regular' or 'fast'
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %line segment detection for image
 parametersMCMLSD = initialization_MCMLSD(img,mode);
