@@ -58,7 +58,6 @@ rotation.roll=rollest;
 rotation.tilt=tiltest;
 
 if parameters.QC
-    % x=[parameters(:,1),parameters(:,6)./parameters(:,3),parameters(:,8)./parameters(:,5)];
     ind=associationSeg~=4;
     directionsdir=associationSeg(ind);
     N = histcounts(directionsdir,1:4);
