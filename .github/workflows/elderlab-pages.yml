@@ -1,0 +1,95 @@
+name: Elderlab Pages CI/CD
+run-name: ${{ github.actor }} initializing booklet 
+on: 
+  workflow_dispatch:
+  push:
+    branches: [booklet]
+  pull_request_target:
+    types: [closed]
+    branches: [booklet]
+      
+jobs:
+  init_booklet:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref_name == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          
+      - name: check out to booklet branch
+        run: |
+          git checkout -b booklet
+          
+      - name: install jupyter book and cookiecutter
+        run: |
+          pip install -U cookiecutter jupyter-book
+          
+      - name: build jupyter book toc
+        run: |
+          jupyter-book toc from-project ./ -t -e .md -e .ipynb > _toc.yml
+          
+      - name: build jupyter book config
+        run: |
+          curl -o _config.yml 'https://raw.githubusercontent.com/ElderLab-York-University/Pages/main/_config.yml'
+          curl -o change_yml.py 'https://raw.githubusercontent.com/ElderLab-York-University/Pages/main/change_yml.py'
+          curl -o change_yml_url.py 'https://raw.githubusercontent.com/ElderLab-York-University/Pages/main/change_yml_url.py' 
+      
+      - name: set config field in yml file
+        run: |
+          python change_yml.py _config.yml title ${{ github.repository }}
+          python change_yml.py _config.yml repository.url ${{ github.repositoryUrl }}
+          python change_yml_url.py _config.yml
+          rm change_yml.py
+          rm change_yml_url.py
+          
+      - name: Commit changes
+        run: |
+          git add .
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -a -m "init booklet"
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: "booklet"
+        
+      - name: Build the book
+        run: |
+          jupyter-book build .
+          
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3.6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
+          publish_branch: gh-pages
+          
+  deploy-book:
+    if: ${{ github.event_name == 'push' && github.ref_name == 'booklet' }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+        
+    - name: install jupyter book and cookiecutter
+      run: |
+        pip install -U cookiecutter jupyter-book
+
+    - name: Build the book
+      run: |
+        jupyter-book build .
+ 
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_build/html
+        publish_branch: gh-pages
