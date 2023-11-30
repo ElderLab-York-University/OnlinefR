@@ -23,3 +23,6 @@ The LSD algorithm is from obtained from paper:
 Von Gioi, R. G., Jakubowicz, J., Morel, J. M., & Randall, G. (2012). LSD: A line segment detector. Image Processing On Line, 2, 35-55.
 The LSD algorithm also require compiling its c code into MEX binary file. The instruction is available in its folder in README.txt.
 
+
+Test
+
