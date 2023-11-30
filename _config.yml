@@ -1,0 +1,19 @@
+author: ElderLab
+copyright: ElderLab
+execute:
+  execute_notebooks: false
+html:
+  google_analytics_id: __G_ANALYTICS_ID__
+  use_edit_page_button: true
+  use_issues_button: true
+  use_repository_button: true
+launch_buttons:
+  binderhub_url: https://mybinder.org
+  colab_url: https://colab.research.google.com
+  notebook_interface: jupyterlab
+logo: https://www.elderlab.yorku.ca/wp-content/uploads/2017/10/Artboard-10@2x.png
+repository:
+  branch: booklet
+  path_to_book: ./
+  url: https://github.com/ElderLab-York-University/OnlinefR
+title: ElderLab-York-University/OnlinefR
